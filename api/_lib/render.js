@@ -11,10 +11,12 @@ import {
   STORE_IOS_URL,
 } from './config.js'
 
-// Every activity in production today carries `timezone: "Europe/Istanbul"`
-// (Turkey is the only launch market — see config.js/CLAUDE.md). Only used
-// when an activity record is somehow missing the field; never overrides a
-// real value.
+// `ActivityPublicPreviewResponse` (civemate-api) returns the activity's real
+// `timezone` (an IANA zone name, e.g. "Europe/Istanbul") when the row has
+// one set. This is the fallback for the two cases where it doesn't: an
+// older row created before the column was backfilled, or a blank/null
+// value — NOT the common case, since Turkey being the only launch market
+// today means most real values equal this anyway.
 const DEFAULT_ACTIVITY_TIMEZONE = 'Europe/Istanbul'
 
 // "Sat, Jan 10 · 21:00" / "Cmt, Oca 10 · 21:00" — same shape (weekday,

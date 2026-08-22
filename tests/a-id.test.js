@@ -45,6 +45,60 @@ test('renders og tags in the raw body for a valid activity, including the date',
   console.log('RENDERED OG BLOCK:\n' + res.body.match(/<meta property="og:[a-z:]+"[^>]*>/g).join('\n'))
 })
 
+test('a blank timezone (present but empty) still renders via the Europe/Istanbul fallback', async () => {
+  const res = makeRes()
+  await withFetch(
+    async () =>
+      jsonResponse(200, {
+        id: VALID_ID,
+        title: 'Kadıköy Jam Session',
+        description: 'Bring your own instrument.',
+        cover_url: null,
+        start_time: '2026-09-12T18:00:00Z',
+        timezone: '',
+        city: 'Istanbul',
+        organiser_display_name: 'Ada',
+      }),
+    async () => {
+      await handler(makeReq({ id: VALID_ID }), res)
+    },
+  )
+
+  assert.equal(res.statusCode, 200)
+  // Same 18:00Z start as the fallback-via-missing-field test above: an
+  // empty string is falsy, same as undefined, so it degrades to the
+  // Europe/Istanbul default (21:00), not to some other/no time.
+  assert.match(res.body, /21:00/)
+})
+
+test('an explicit non-Istanbul timezone renders a different local time than the fallback would — proves the field is actually used, not ignored', async () => {
+  const res = makeRes()
+  await withFetch(
+    async () =>
+      jsonResponse(200, {
+        id: VALID_ID,
+        title: 'Remote Meetup',
+        description: 'Streamed live.',
+        cover_url: null,
+        start_time: '2026-09-12T18:00:00Z',
+        timezone: 'America/New_York',
+        city: 'New York',
+        organiser_display_name: 'Ada',
+      }),
+    async () => {
+      await handler(makeReq({ id: VALID_ID }), res)
+    },
+  )
+
+  assert.equal(res.statusCode, 200)
+  // Same 18:00Z instant as the Istanbul-fallback tests, but America/New_York
+  // is UTC-4 in September (EDT): 18:00Z -> 14:00, not 21:00. If the handler
+  // were silently defaulting to Europe/Istanbul regardless of what the API
+  // sends, this would (wrongly) also read 21:00.
+  assert.match(res.body, /14:00/)
+  assert.equal(res.body.includes('21:00'), false)
+})
+
 test('escapes an XSS payload in the title (text node and content attribute)', async () => {
   const res = makeRes()
   const payload = '<script>alert(1)</script>'
