@@ -105,7 +105,7 @@ function App({ lang = 'en' }) {
 
   const [activePin, setActivePin] = useState(5)
   const [menuOpen, setMenuOpen] = useState(false)
-  const [form, setForm] = useState({ name: '', email: '', role: t.waitlist.roles[0] })
+  const [form, setForm] = useState({ name: '', email: '', city: '', role: t.waitlist.roles[0] })
   const [status, setStatus] = useState('idle')
   const [error, setError] = useState('')
 
@@ -151,7 +151,7 @@ function App({ lang = 'en' }) {
         body: JSON.stringify({
           ...form,
           source: `civemate-landing-${lang}`,
-          _subject: `New CiveMate demo request — ${form.role}`,
+          _subject: `New CiveMate demo request — ${form.role}${form.city ? ` · ${form.city}` : ''}`,
           _template: 'table',
         }),
       })
@@ -339,6 +339,10 @@ function App({ lang = 'en' }) {
                 <label>
                   {t.waitlist.emailLabel}
                   <input name="email" value={form.email} onChange={updateField} autoComplete="email" inputMode="email" placeholder={t.waitlist.emailPlaceholder} />
+                </label>
+                <label>
+                  {t.waitlist.cityLabel}
+                  <input name="city" value={form.city} onChange={updateField} autoComplete="address-level2" placeholder={t.waitlist.cityPlaceholder} />
                 </label>
                 <label>
                   {t.waitlist.roleLabel}
