@@ -4,7 +4,11 @@
   "outputDirectory": "dist",
   "trailingSlash": false,
   "rewrites": [
-    { "source": "/a/:id", "destination": "/api/a/:id" },
+    {
+      "source": "/a/:id",
+      "has": [{ "type": "host", "value": "app.civemate.com" }],
+      "destination": "/api/a/:id"
+    },
     {
       "source": "/.well-known/assetlinks.json",
       "has": [{ "type": "host", "value": "app.civemate.com" }],

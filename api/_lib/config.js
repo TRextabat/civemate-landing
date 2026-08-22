@@ -15,6 +15,12 @@ export const API_BASE_URL = process.env.API_BASE_URL || 'https://api.civemate.co
 // print into the HTML.
 export const APP_ORIGIN = process.env.APP_ORIGIN || 'https://app.civemate.com'
 
+// The marketing site's own origin — civemate.com, MARKETING ONLY (never
+// where a share link/App Link should resolve; see vercel.json's host
+// scoping). Only used for the "About CiveMate" outbound link and the error
+// pages' fallback link, never for anything under /a/:id's own routing.
+export const MARKETING_ORIGIN = process.env.MARKETING_ORIGIN || 'https://civemate.com'
+
 // Store links are CONFIGURABLE and intentionally allowed to be unset — the
 // app is not published to either store yet. A function must never print a
 // store URL that 404s; see storeButtonsHtml() in render.js, which renders a

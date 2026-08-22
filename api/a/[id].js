@@ -11,7 +11,7 @@
 // Deliberately never redirects (no 3xx): a blind redirect is invisible to
 // social-media unfurlers, which only ever look at the first HTML response.
 import { API_BASE_URL, APP_ORIGIN } from '../_lib/config.js'
-import { buildActivityPage, buildNotFoundPage, buildErrorPage } from '../_lib/render.js'
+import { buildActivityPage, buildNotFoundPage, buildErrorPage, resolveLang } from '../_lib/render.js'
 
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
 const FETCH_TIMEOUT_MS = 5000
@@ -71,7 +71,8 @@ export default async function handler(req, res) {
     return
   }
 
-  const html = buildActivityPage({ activity, canonicalUrl })
+  const lang = resolveLang(req.headers['accept-language'])
+  const html = buildActivityPage({ activity, canonicalUrl, lang })
   // Short-lived cache: crawlers refetch link previews far less often than
   // users tap the link, and an edited/cancelled activity should stop
   // unfurling with stale info within minutes, not a day.
