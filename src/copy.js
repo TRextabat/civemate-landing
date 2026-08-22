@@ -2,7 +2,7 @@
 // locale at build time (scripts/prerender.mjs), so this never ships as runtime
 // translation machinery — each language is a separate static HTML file.
 //
-// Turkish is the launch market (Kadıköy first), so tr is written as native
+// Turkish is the launch market (Istanbul first), so tr is written as native
 // marketing copy rather than a literal translation of en.
 
 export const LOCALES = ['en', 'tr']
@@ -47,24 +47,24 @@ export const meta = {
     path: '/',
     title: "CiveMate — Your city's cultural life on a live map",
     description:
-      "CiveMate puts Istanbul's cultural life on a live map. Find concerts, readings, workshops and street performances near you, open a role for the collaborator you're missing, or go with a +1. Starting in Kadıköy.",
+      "CiveMate puts a city's cultural life on a live map. Find concerts, readings, workshops and street performances near you, open a role for the collaborator you're missing, or go with a +1. Starting in Istanbul, open to every city.",
     ogLocale: 'en_US',
     ogTitle: "CiveMate — Your city's cultural life on a live map",
     ogDescription:
       'Put a set, rehearsal, workshop or performance on the live map. Find collaborators and an audience. No stage required.',
-    ogImageAlt: 'CiveMate — a risograph map of Kadıköy with cultural activity pins.',
+    ogImageAlt: 'CiveMate — a risograph city map with cultural activity pins.',
   },
   tr: {
     lang: 'tr',
     path: '/tr',
     title: 'CiveMate — Şehrinin kültür hayatı canlı haritada',
     description:
-      "CiveMate İstanbul'un kültür hayatını canlı haritaya taşır. Yakınındaki konserleri, okumaları, atölyeleri ve sokak performanslarını keşfet, eksik kaldığın rol için çağrı aç ya da +1'inle git. Kadıköy'de başlıyor.",
+      "CiveMate şehrinin kültür hayatını canlı haritaya taşır. Yakınındaki konserleri, okumaları, atölyeleri ve sokak performanslarını keşfet, eksik kaldığın rol için çağrı aç ya da +1'inle git. İstanbul'da başlıyor, her şehre açık.",
     ogLocale: 'tr_TR',
     ogTitle: 'CiveMate — Şehrinin kültür hayatı canlı haritada',
     ogDescription:
       'Setini, provanı, atölyeni ya da performansını canlı haritaya ekle. Birlikte üretecek insanları ve seyircini bul. Sahne gerekmez.',
-    ogImageAlt: 'CiveMate — Kadıköy’ün rizograf haritası ve kültür etkinliği iğneleri.',
+    ogImageAlt: 'CiveMate — rizograf şehir haritası ve kültür etkinliği iğneleri.',
   },
 }
 
@@ -81,15 +81,15 @@ export const copy = {
       langAria: 'Language',
     },
     map: {
-      aria: 'Illustrated map of cultural activities in Kadıköy',
-      imageAlt: 'Real street, coastline, park and building map of Kadıköy',
-      live: 'LIVE / KADIKÖY',
+      aria: 'Illustrated map of cultural activities in Istanbul',
+      imageAlt: 'Real street, coastline, park and building map of Kadıköy, Istanbul',
+      live: 'LIVE / İSTANBUL',
       nearby: (n) => `${n} ACTIVITIES NEARBY`,
       show: (t) => `Show ${t}`,
       view: 'View activity',
       more: 'More nearby activities',
       stamp: ['NO', 'STAGE', 'REQUIRED'],
-      attribution: 'Real Kadıköy map · © OpenStreetMap contributors',
+      attribution: 'Preview · sample activities · Real Istanbul map · © OpenStreetMap contributors',
       depth: 'CULTURE / IN REAL SPACE',
     },
     activities: [
@@ -108,7 +108,7 @@ export const copy = {
       lede: 'CiveMate turns cultural ideas into real-world activity. Put a set, rehearsal, workshop, or performance on the live map; find collaborators and an audience; then keep the memory, credit, and community that follow.',
       primary: 'Get an early demo',
       secondary: 'See what the app does',
-      microcopy: 'Starting in Kadıköy · For creators, culture lovers, and curious neighbors',
+      microcopy: 'Starting in Istanbul, open to every city · For creators, culture lovers, and curious neighbors',
     },
     ticker: {
       aria: 'CiveMate capabilities',
@@ -137,7 +137,7 @@ export const copy = {
       h2b: 'IS A ',
       h2c: 'STAGE.',
       body: 'Playing by the water tonight? Mark the set “happening now,” appear on the live map, welcome nearby listeners, or open a role for another musician or photographer.',
-      imageAlt: 'Street musician playing an acoustic set beside the Kadıköy waterfront',
+      imageAlt: 'Street musician playing an acoustic set beside the Istanbul waterfront',
       badge: 'LIVE · MODA SAHİLİ',
       flowAria: 'Street artist journey',
       flow: ['Go live', 'Gather a crowd', 'Find your people', 'Keep the credit'],
@@ -169,7 +169,7 @@ export const copy = {
       institutionBody: 'Theatres, galleries, and cultural centres join the same map with verified profiles, team tools, and attendance insight.',
     },
     waitlist: {
-      label: 'DEMO WAITLIST · ISTANBUL',
+      label: 'DEMO WAITLIST · OPEN TO EVERY CITY',
       h2a: 'HELP US',
       h2b: 'PUT THE FIRST',
       h2c: 'PINS ON THE MAP.',
@@ -180,6 +180,8 @@ export const copy = {
       namePlaceholder: 'How should we call you?',
       emailLabel: 'Email address',
       emailPlaceholder: 'you@example.com',
+      cityLabel: 'Your city',
+      cityPlaceholder: 'Anywhere in the world',
       roleLabel: 'I’m joining as',
       roles: ['Culture explorer', 'Artist or creator', 'Collective or community', 'Venue or institution'],
       submit: 'Join the demo waitlist',
@@ -203,15 +205,19 @@ export const copy = {
       items: [
         {
           q: 'What is CiveMate?',
-          a: "CiveMate is a cultural activities platform that puts your city's cultural life on one live map. You can see concerts, theatre, readings, workshops and street performances happening near you, create your own activity, and find the collaborators or company you need to make it happen.",
+          a: "CiveMate is a cultural activities platform that puts your city's cultural life on one live map. You will be able to see concerts, theatre, readings, workshops and street performances happening near you, create your own activity, and find the collaborators or company you need to make it happen. CiveMate is not public yet — the map on this page shows sample activities, and we are inviting a small early group to try the real thing first.",
         },
         {
           q: "How do I find out what's happening in Istanbul tonight?",
           a: 'Open the map and you see what is on near you right now — planned shows for tonight and this week, plus spontaneous sessions marked “happening now” while they are still going. No scrolling through group chats or event pages that were last updated in March.',
         },
         {
-          q: 'Where can I find concerts, theatre and workshops in Kadıköy?',
-          a: 'All of them sit on the same map. CiveMate starts in Kadıköy — Moda, Moda Sahili, Caferağa, Yeldeğirmeni and Osmanağa — covering live music, one-act play readings, poetry and book readings, sketch circles, art workshops, exhibitions and street performances.',
+          q: 'Where can I find concerts, theatre and workshops in Istanbul?',
+          a: 'All of them sit on the same map — live music, one-act play readings, poetry and book readings, sketch circles, art workshops, exhibitions and street performances. CiveMate starts in Istanbul, on both sides of the city, and the map is not limited to one neighbourhood.',
+        },
+        {
+          q: "I'm not in Istanbul. Can I still use CiveMate?",
+          a: 'Yes — join the early list from anywhere. CiveMate is not built for one city; it is built for whichever city you are standing in. Istanbul is simply where the first pins go, because that is where we can be on the ground. Tell us your city when you sign up and it helps decide where the map opens next.',
         },
         {
           q: 'Does it cost anything to join an activity?',
@@ -253,15 +259,15 @@ export const copy = {
       langAria: 'Dil',
     },
     map: {
-      aria: 'Kadıköy’deki kültür etkinliklerinin çizimli haritası',
-      imageAlt: 'Kadıköy’ün sokak, sahil, park ve bina haritası',
-      live: 'CANLI / KADIKÖY',
+      aria: 'İstanbul’daki kültür etkinliklerinin çizimli haritası',
+      imageAlt: 'İstanbul, Kadıköy’ün sokak, sahil, park ve bina haritası',
+      live: 'CANLI / İSTANBUL',
       nearby: (n) => `YAKINDA ${n} ETKİNLİK`,
       show: (t) => `${t} etkinliğini göster`,
       view: 'Etkinliğe git',
       more: 'Yakındaki diğer etkinlikler',
       stamp: ['SAHNE', 'GEREK', 'MEZ'],
-      attribution: 'Gerçek Kadıköy haritası · © OpenStreetMap katkıda bulunanlar',
+      attribution: 'Önizleme · örnek etkinlikler · Gerçek İstanbul haritası · © OpenStreetMap katkıda bulunanlar',
       depth: 'KÜLTÜR / GERÇEK MEKÂNDA',
     },
     activities: [
@@ -280,7 +286,7 @@ export const copy = {
       lede: 'CiveMate kültürel fikirleri gerçek buluşmalara dönüştürür. Setini, provanı, atölyeni ya da performansını canlı haritaya ekle; birlikte üretecek insanları ve seyircini bul; geriye kalan anıyı, emeği ve topluluğu sakla.',
       primary: 'Erken demo al',
       secondary: 'Uygulama ne yapıyor',
-      microcopy: 'Kadıköy’de başlıyor · Üretenler, kültür sevenler ve meraklı komşular için',
+      microcopy: 'İstanbul’da başlıyor, her şehre açık · Üretenler, kültür sevenler ve meraklı komşular için',
     },
     ticker: {
       aria: 'CiveMate özellikleri',
@@ -309,7 +315,7 @@ export const copy = {
       h2b: 'BİR ',
       h2c: 'SAHNEDİR.',
       body: 'Bu akşam sahilde mi çalıyorsun? Setini “şimdi oluyor” diye işaretle, canlı haritada görün, yakındaki dinleyicileri çağır ya da başka bir müzisyen veya fotoğrafçı için rol aç.',
-      imageAlt: 'Kadıköy sahilinde akustik set çalan sokak müzisyeni',
+      imageAlt: 'İstanbul sahilinde akustik set çalan sokak müzisyeni',
       badge: 'CANLI · MODA SAHİLİ',
       flowAria: 'Sokak sanatçısı yolculuğu',
       flow: ['Yayına geç', 'Kalabalığını topla', 'İnsanını bul', 'Emeğin sende kalsın'],
@@ -341,7 +347,7 @@ export const copy = {
       institutionBody: 'Tiyatrolar, galeriler ve kültür merkezleri aynı haritaya doğrulanmış profiller, ekip araçları ve katılım verisiyle katılır.',
     },
     waitlist: {
-      label: 'DEMO LİSTESİ · İSTANBUL',
+      label: 'DEMO LİSTESİ · HER ŞEHRE AÇIK',
       h2a: 'HARİTAYA İLK',
       h2b: 'İĞNELERİ',
       h2c: 'BİRLİKTE KOYALIM.',
@@ -352,6 +358,8 @@ export const copy = {
       namePlaceholder: 'Sana nasıl seslenelim?',
       emailLabel: 'E-posta adresin',
       emailPlaceholder: 'sen@ornek.com',
+      cityLabel: 'Şehrin',
+      cityPlaceholder: 'Dünyanın neresinde olursan',
       roleLabel: 'Şu şekilde katılıyorum',
       roles: ['Kültür meraklısı', 'Sanatçı ya da üretici', 'Kolektif ya da topluluk', 'Mekân ya da kurum'],
       submit: 'Demo listesine katıl',
@@ -371,15 +379,19 @@ export const copy = {
       items: [
         {
           q: 'CiveMate nedir?',
-          a: 'CiveMate, şehrinin kültür hayatını tek bir canlı haritada toplayan bir kültürel etkinlik platformudur. Yakınında olan konserleri, tiyatroları, okumaları, atölyeleri ve sokak performanslarını görebilir, kendi etkinliğini oluşturabilir ve onu gerçekleştirmek için ihtiyacın olan insanları bulabilirsin.',
+          a: 'CiveMate, şehrinin kültür hayatını tek bir canlı haritada toplayan bir kültürel etkinlik platformudur. Yakınında olan konserleri, tiyatroları, okumaları, atölyeleri ve sokak performanslarını görebilecek, kendi etkinliğini oluşturabilecek ve onu gerçekleştirmek için ihtiyacın olan insanları bulabileceksin. CiveMate henüz halka açık değil — bu sayfadaki harita örnek etkinlikler gösteriyor ve gerçeğini önce küçük bir erken gruba açıyoruz.',
         },
         {
           q: "İstanbul'da bu akşam ne olduğunu nasıl öğrenirim?",
           a: 'Haritayı aç, yakınında şu anda ne olduğunu gör: bu akşama ve bu haftaya planlanmış etkinliklerin yanı sıra, tam o sırada devam eden ve “şimdi oluyor” diye işaretlenmiş anlık buluşmalar. Grup sohbetlerini taramana ya da en son martta güncellenmiş etkinlik sayfalarına bakmana gerek yok.',
         },
         {
-          q: "Kadıköy'de konser, tiyatro ve atölyeleri nerede bulurum?",
-          a: 'Hepsi aynı haritada. CiveMate Kadıköy’de başlıyor — Moda, Moda Sahili, Caferağa, Yeldeğirmeni ve Osmanağa — canlı müzik, tek perdelik oyun okumaları, şiir ve kitap okumaları, çizim halkaları, sanat atölyeleri, sergiler ve sokak performanslarıyla.',
+          q: "İstanbul'da konser, tiyatro ve atölyeleri nerede bulurum?",
+          a: 'Hepsi aynı haritada: canlı müzik, tek perdelik oyun okumaları, şiir ve kitap okumaları, çizim halkaları, sanat atölyeleri, sergiler ve sokak performansları. CiveMate İstanbul’da başlıyor, şehrin iki yakasında da, ve harita tek bir mahalleyle sınırlı değil.',
+        },
+        {
+          q: 'İstanbul’da değilim. CiveMate’i yine de kullanabilir miyim?',
+          a: 'Evet — erken listeye dünyanın her yerinden katılabilirsin. CiveMate tek bir şehir için değil, hangi şehirde duruyorsan onun için tasarlandı. İstanbul ilk iğnelerin konduğu yer, çünkü sahada olabildiğimiz yer orası. Kaydolurken şehrini yaz; haritanın sırada hangi şehirde açılacağını bu belirliyor.',
         },
         {
           q: 'Etkinliğe katılmak ücretli mi?',
